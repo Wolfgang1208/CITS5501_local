@@ -20,3 +20,14 @@
 
 # Invariants
 - We will mostly be interested in erroneous states that happen because some class or program invariant has been violated
+
+# What sorts of things can we test?
+- test some code which is a small part of a large system
+    - for instance: a single procedure, method or function
+    - unit test
+- test how units, classes, modules or other components of a system work together 
+    - intergration testing
+- test an entire system
+    - system testing
+- we can test whether the system meets its specifications (system testing proper), and whether it properly executes some scenario in ana appropriate environment
+    - end-to-end testing
