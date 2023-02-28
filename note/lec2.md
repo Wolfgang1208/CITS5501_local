@@ -31,3 +31,7 @@
     - system testing
 - we can test whether the system meets its specifications (system testing proper), and whether it properly executes some scenario in ana appropriate environment
     - end-to-end testing
+...
+
+# Testing
+- testing requires a different mind-set from construction: when 
