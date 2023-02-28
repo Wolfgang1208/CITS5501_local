@@ -17,3 +17,6 @@
 # wider definition of faults
 
 # Erroneous State
+
+# Invariants
+- We will mostly be interested in erroneous states that happen because some class or program invariant has been violated
