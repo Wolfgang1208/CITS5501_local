@@ -249,6 +249,7 @@
 - It consists of one particular set of input data, and the expected output (behaviour)
 
 - A test case could be testing:
+
   - How a method or function behaves when invoked (unit test)
   - How two classes interoperate (intregrate test)
   - How an entire system
@@ -256,3 +257,44 @@
     - behaves when run from the command-line
     - (system test)
   - Whether a system meets some criterin for usability (accepetance test)
+
+- Some Questions:
+
+  - If you're asked to suggest a test case
+    - are you being asked to write code?
+  - If some Python programmer has written a class which inherits from unittest.TestCase
+
+    - does that mean the class represents exactly one test case?
+
+  - A test case is not code
+    - you are being asked to describe, and usually justify
+      - a set of inputs which can be supplied to a component or system
+      - and the expected output
+
+# Describing test cases
+
+- A good way to describe a test case (especially if there are several test cases you'll need to describe) is to put it in a table.
+- At a minimum:
+  - SUT:
+    - What the sustem under test
+  - Input value:
+    - What values you supply in order to put the SUT into an appropriate state, and invoke the desired behaviour
+  - Expected output:
+    - What expected behaviour or characteristics you expect to see (and possibly, what actions and/or measurements you'll take in order to observe them)
+
+<img src="../image/lec2pic8.png">
+
+# Test cases vs code
+
+- Consider:
+  - if some Python programmer has written a class which inherits from unittest.TestCase - does that means the class represents exactly one test case?
+    <img src="../image/lec2pic9.png">
+
+# Test fixtures
+
+- The preparation needed to perform one or more tests
+
+- The idea of a "fixture" comes from testing of hardware 
+  - a "fixture" is everything that holds the piece of hardware in place, and provides you with known environment and conditions it can be tested in
+
+<img src="../image/lec2pic10.png">
