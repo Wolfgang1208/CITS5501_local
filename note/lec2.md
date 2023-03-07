@@ -1,9 +1,12 @@
 # Hightlights
-- Documentation and APIs: how do we work out what the correct behaviour of a piece of software is *so that we can test it?*
+
+- Documentation and APIs: how do we work out what the correct behaviour of a piece of software is _so that we can test it?_
 - Unit testing: What is unit testing, what is the terminology, and how do we write unit tests?
 
 # Faults, failures and errors
+
 - In normal English, we might not make much distinction between them.
+
 ## in software engineering:
 
 - the behaviour of a running system (what we can observe about what the system does)
@@ -11,7 +14,8 @@
 - the runtime state of the system (i.e., what's currently stored in memory)
 
 # Failure
-- Recall that:  
+
+- Recall that:
   - A failure is any deviation of the observed behaviour of a program or system from the specification.
 - It describes the system's behaviour
 - (Can we say a file of source code contains a "failure"? No. But can we say a failure occurs when some program is run? Yes)
@@ -24,7 +28,7 @@
   - This time, the program would be failing to meet a non-functional requirement, that the system meet particular standards for responsiveness
 - If an electronic voting booth should accurately record votes cast , but due to a cosmic ray flipping a bit in memory, 4096 addtional votes are counted for one candidate
   - that is also a failure
--  __failures are systems failied to fulfill the specification or its functionality design.__
+- **failures are systems failied to fulfill the specification or its functionality design.**
 
 # Faults
 
@@ -35,7 +39,7 @@
 # wider definition of faults
 
 - Some sources will use "fault" more broadly to mean the cause of a faliure besides just defects in the code - e.g. perhaps cosmic rays - but we'll mostly be concerned with problems in the code.
-- Not every failure can be tracked back to a *single spot* in the code: failures of security, scalability, performances etc. are global properties of the system artifacts.
+- Not every failure can be tracked back to a _single spot_ in the code: failures of security, scalability, performances etc. are global properties of the system artifacts.
 
 # Erroneous State
 
@@ -48,12 +52,19 @@
 - ## **invariant has been violated->lead to system erroneous status**
 
 # e.g. Class invariant example - a stack
+
 - here: class invariant: topOfStack always points to current top item (or -1 if empty)
-<img src="../image/lec2pic2.png">
+  <img src="../image/lec2pic2.png">
 
 # Reliability
 
 - The reliability of a system is the degree to which its **observed behaviour** conforms to its **specification**
+
+# Testing
+
+# Definition
+
+- We define testing as a systematic attempt to find faults in a software system in a planned way.
 
 # What sorts of things can we test?
 
@@ -64,9 +75,118 @@
   - intergration testing
 - test an entire system
   - system testing
-- we can test whether the system meets its specifications (system testing proper), and whether it properly executes some scenario in ana appropriate environment - end-to-end testing
-  ...
+- we can test whether the system meets its specifications (system testing proper), and whether it properly executes some scenario in ana appropriate environment
+  - end-to-end testing
+- We can also classify them by the purpose of the test, or when in the software development lifecycle the testing activity occurs:
+  - After making a change to some component
+    - havent changed more than what you want to change
+    - an enhancement, or bug fix, or re-factoring
+    - we can check whether it still passes all relevant test.
+    - regression testing
+  - On delivery of a system: we can 'test' whether a system meets a customer's expectations
+    - acceptance testing
+      ...
 
 # Testing
 
-- testing requires a different mind-set from construction: when
+- testing requires a different mind-set from construction:
+  - when
+
+# Unit testing and unit specifications
+
+- We'll start by looing at the "lowest" level of tests, unit tests
+- When we test a unit of code, we aim to (by finding faults and removing them) increase our confidence that it meets its specifications
+  - If we dont have any specifications for it, that obviouly makes life difficult
+- So in general, we aim to document the intended behaviour of any externally accessible unit
+  - (Some units might be purely internal - "protected" or "private", for instance, in Java - it is usually good practice to document those as well)
+
+# Documenting units
+
+- Most modern languages provide some way of docuenting the specification of units inline
+
+  - (in the body of the code, rather than in a separate reference manual)
+    and extracting that documentation for use by developers.
+
+- For instance
+
+  - Javadoc
+  - Pydoc
+
+- For language which do not have such a tool,
+  - Doxygen - like javadoc
+
+# Javadoc
+
+- Consider the taskof finding the position of the first occurrence of some character in a string
+  - Java:
+    - String.indexOf()
+  - Signature:
+    - int indexOf(int ch)
+  - That is, it takes an int and returns an int
+
+# e.g.:
+
+<img src="../image/lec2pic3.png">
+
+# Javadoc e.g.
+
+- Key points from the Javadoc documentation:
+  - When we call someString.indexOf(**ch**):
+    - If **ch** is _not_ in someString, the method returns -1.
+    - If **ch** is in someString, the method returns "the smallest value k such that > this.codePointAt(K) == **ch**"
+
+<img src="../image/lec2pic4.png">
+
+# Pydoc
+
+<img src="../image/lec2pic5.png">
+
+# Pydoc
+
+- Intead of returning -1 when the string dose not occur, Python throws an exception
+- In Python
+  -exception are often thrown to indicate the absence of something
+
+# API
+
+- Application Programming Interface
+- The name derives from the idea that if we write a re-usable component of some sort(like a library), then other developers will want to use this in their application programming, and we should document the public _interface_ to that component
+
+# APIs as contracts
+
+- We can think of the API for a function as constituting a _contract_ between the developer of the function, and the client code using it
+
+# APIs cont'd
+
+- The behaviour of the function
+  - will usually be to renturn some sort of value
+    to cause some sort of "side effect"
+
+# APIs - specification vs implementation
+
+- The API documentation does not normally say how the fucntion is to be implemented
+  - just what its return value and effects are
+- This means that if the library developer decides to reimplement the function in another way (for instance, to improve efficiency), they can, without changing the API
+
+# e.g.
+
+- Oracle corporation provides an implementation of the Java standard libraries (as well as of the Java coomplier, javac, and JVM)
+
+# specification also gives how it does it
+
+-
+
+# What should go in the API documentation?
+
+- The _preconfitions_
+  - any conditions which should be satisfied by the parameters or the system state when the function is called
+- The _postcondition_
+  - the return value of the function, and any changes the function makes to the system state ("side effects")
+- Sometimes the postcondition will vary, depending on the arguments passed:
+  - "IF a valid email address is supplied, THEN the emailMyResignationLetter()" method wil email a resignation letter. But if not, then a MalformeedEmailAddress exception will be thrown"
+
+- ## We need to make sure we cover all circumstances, so that users of an API will know what to expect
+
+- If the precondiction are not satisfied, then the behaviour is **undefined**
+- This means the user has failde to live up to their part of the "bargain", and has NO guarantees about what the system might do.
+# e.g. java: binarySearch
