@@ -159,43 +159,78 @@
 # APIs as contracts
 
 - We can think of the API for a function as constituting a _contract_ between the developer of the function, and the client code using it
+- In effect, the documentation says "If you, the client code, pass me arguments which meet the following criteria, I promise to do the following thing: ..."
 
 # APIs cont'd
 
 - The behaviour of the function
   - will usually be to renturn some sort of value
     to cause some sort of "side effect"
+- A side effect is anything the function does to alter the current or subsequent behaviour of the system or its intraction with external systems, other than returning a value.
+  - For example, writing a file to disk, or sending an email, or changing the value of a global variable.
+
+# API e.g.
+
+- If you have used Java, you most likely at some point will have written something like System.out.println("Hello World")
+
+  - What does the **println** method promise to do?
+  - The Javadoc says:
+    - **void println(String x)**
+    - _Prints a String and then terminate the line_
 
 # APIs - specification vs implementation
 
-- The API documentation does not normally say how the fucntion is to be implemented
-  - just what its return value and effects are
+- The API documentation **does not** normally say how the fucntion is to be implemented
+  - just what its **return value** and **effects** are
 - This means that if the library developer decides to reimplement the function in another way (for instance, to improve efficiency), they can, without changing the API
 
 # e.g.
 
 - Oracle corporation provides an implementation of the Java standard libraries (as well as of the Java coomplier, javac, and JVM)
+- But there are other implementations
+  - For instance:
+    - OpenJDK, an open-source version of the standard libraries.
+- These adhere to exactly the same specifications as the Oracle versions
 
-# specification also gives how it does it
+- The POSIX standard specifies an API for Unix-like systems and has been implemented multiple times in different ways by different operating systems
+  - In fact, even Windows, at various times, has met the POSIX standards
 
--
+# "illities"
+
+- Sometimes specifications for units will describe not just what the unit returns or does, but how it does it
+
+  - For instance, if we implement String.indexOf(ch) in the "generate a random number" way we described, it would be extremely slow
+
+- The specification of String.indexOf(ch) could rule out "silly" implementations like this, by saying something like "the **indexOf** method shall provide guaranteed _O(n)_ time cost, where _n_ is the length of the string"
+
+- If you look at the documentation for Java's _TreeMap_ class, in fact, the implementation provide by Oracle promises to provide guarantees about how long particular methods will take to run:
+  - _This implementation provides guaranteed log(n) time cost for the **containsKey**, **get**, **put** and **remove** operations._
+
+# APIs, summary
+
+- The API describes the expected behaviour of a module (or larger system)
+- The code constitutes a particular implementation of that API
 
 # What should go in the API documentation?
 
 - The _preconfitions_
+
   - any conditions which should be satisfied by the parameters or the system state when the function is called
+
 - The _postcondition_
+
   - the return value of the function, and any changes the function makes to the system state ("side effects")
-- Sometimes the postcondition will vary, depending on the arguments passed:
+
+- Sometimes the postcondition will vary, depending on the arguments passed
 
   - "IF a valid email address is supplied, THEN the emailMyResignationLetter()" method wil email a resignation letter. But if not, then a MalformeedEmailAddress exception will be thrown"
 
 - ## We need to make sure we cover all circumstances, so that users of an API will know what to expect
 
 - If the precondiction are not satisfied, then the behaviour is **undefined**
-- This means the user has failde to live up to their part of the "bargain", and has NO guarantees about what the system might do.
+  - This means the user has failde to live up to their part of the "bargain", and has NO guarantees about what the system might do.
 
-# e.g. java: binarySearch
+## e.g. java: binarySearch
 
 ## Precondition+Postcondition->ready to write tests for it
 
@@ -306,5 +341,4 @@
 # Test fixtures
 
 - For software, we likewise may need to get the environment and confitions into a known state for testing
-  - Thing we might need to do
-    -
+  - ## Thing we might need to do
