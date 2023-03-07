@@ -9,7 +9,7 @@
 
 ## in software engineering:
 
-- the behaviour of a running system (what we can observe about what the system does)
+- the behaviour of **a running system** (what we can observe about what the system does)
 - the static artifacts for which the system is produced (e.g. files of source code, or data files in formats like HTML or CSS)
 - the runtime state of the system (i.e., what's currently stored in memory)
 
@@ -102,7 +102,7 @@
 
 # Documenting units
 
-- Most modern languages provide some way of docuenting the specification of units inline
+- **_Most_** modern languages provide some way of docuenting the specification of units inline
 
   - (in the body of the code, rather than in a separate reference manual)
     and extracting that documentation for use by developers.
@@ -113,7 +113,11 @@
   - Pydoc
 
 - For language which do not have such a tool,
+
   - Doxygen - like javadoc
+
+- All languages' documentation are written by comment.
+  - No, HTML, Markdown, Rust, Go
 
 # Javadoc
 
@@ -300,6 +304,7 @@
 <img src="../image/lec2pic10.png">
 
 # Test fixtures
+
 - For software, we likewise may need to get the environment and confitions into a known state for testing
   - Thing we might need to do
-    - 
+    -
