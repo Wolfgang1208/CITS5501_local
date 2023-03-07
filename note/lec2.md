@@ -183,10 +183,76 @@
 - The _postcondition_
   - the return value of the function, and any changes the function makes to the system state ("side effects")
 - Sometimes the postcondition will vary, depending on the arguments passed:
+
   - "IF a valid email address is supplied, THEN the emailMyResignationLetter()" method wil email a resignation letter. But if not, then a MalformeedEmailAddress exception will be thrown"
 
 - ## We need to make sure we cover all circumstances, so that users of an API will know what to expect
 
 - If the precondiction are not satisfied, then the behaviour is **undefined**
 - This means the user has failde to live up to their part of the "bargain", and has NO guarantees about what the system might do.
+
 # e.g. java: binarySearch
+
+## Precondition+Postcondition->ready to write tests for it
+
+# Unit tests
+
+- Unit tests should focus on one tiny bit of functionality, and attempt to find any deviations from expected behaviour
+
+# Desirable properties of unit tests
+
+- unit tests should be
+  - quick to run
+    - We want developers to run test whenever changes are made to the code, or at least when they are committed to version control.
+  - independent of other tests.
+    - Tests should not rely on other particular tests having been run before them
+  - run frequently.
+    -We want to identify faults as early as possible
+    - Most version control systems make it possible to perform particular tasks whenever code is committed, using "hooks"
+    - It's therefore possile to run tests every time code is committed
+      - if tests arent quick to run, developers may avoid committing code regularly.
+
+# Unit testing -Java e.g.
+
+<img src="../image/lec2pic6.png">
+
+- In java, methods which are intended to be run as tests are labelled with the annotation **org.junit.Test**
+- The test framework can then be used to run a test:
+  - $ java -cp .:junit-4.01.jar org.junit.runner.JUnitCore CalculatorTest
+
+<img src="../image/lec2pic7.png">
+
+# Testing terminology
+
+- test case
+
+  - the basic unit of testing, which checks the observable behaviour or characteristics of a component or system in response to a particular ste of inputs
+  - In consist of one particular set of input data, and the expectted output (behaviour)
+
+- system under test
+
+  - the component or system being tested, whose behaviour we want to observe
+  - Sometime also called the _unit under test_ /UUR, or _application under test_ /AUT
+  - We'll use "subject under test" to refer to any or all of these
+  - "test object"
+
+- test suite
+  - a collection of test cases (or other test suites)
+- test runner
+  - a software tool which manages the execution of tests, and reports their outcome
+- test fixture
+  - the preparation needed to perform one or more tests
+
+# Test case
+
+- The basic unit of testing, which checks the observable behaviour or characteristics of a component or system in response to a particular set of inputs
+- It consists of one particular set of input data, and the expected output (behaviour)
+
+- A test case could be testing:
+  - How a method or function behaves when invoked (unit test)
+  - How two classes interoperate (intregrate test)
+  - How an entire system
+    - say, a command-line program
+    - behaves when run from the command-line
+    - (system test)
+  - Whether a system meets some criterin for usability (accepetance test)
