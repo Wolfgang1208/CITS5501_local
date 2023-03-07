@@ -294,7 +294,12 @@
 
 - The preparation needed to perform one or more tests
 
-- The idea of a "fixture" comes from testing of hardware 
+- The idea of a "fixture" comes from testing of hardware
   - a "fixture" is everything that holds the piece of hardware in place, and provides you with known environment and conditions it can be tested in
 
 <img src="../image/lec2pic10.png">
+
+# Test fixtures
+- For software, we likewise may need to get the environment and confitions into a known state for testing
+  - Thing we might need to do
+    - 
