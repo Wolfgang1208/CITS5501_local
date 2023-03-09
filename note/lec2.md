@@ -32,7 +32,7 @@
 
 # Faults
 
-- also called bugs or defects - A fault is something in the statci artifacts of a system that cause a failure
+- also called bugs or defects - A fault is something in the static artifacts of a system that cause a failure
   <img src="../image/lec2pic1.png">
   Should be "<"
 

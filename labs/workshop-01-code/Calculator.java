@@ -50,4 +50,11 @@ public class Calculator {
 }
 
 
-// Q1: Erroneous state Q2: failure Q3: fault
+/*
+Q1: Erroneous state, 
+  The system entered a fault status because of unknown reason
+Q2: failure 
+  The app had failed to meet the non-functional requirement of correctly encrypt the communications.
+Q3: fault
+  A static artifacts in her code caused a failure.
+*/
