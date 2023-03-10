@@ -45,5 +45,5 @@
 - level 0: There's no difference between testing and debugging (not good)
 - level 1: The purpose of testing is to show correctness
 - level 2: The purpose of testing is to show that the software doesn't work
-- level 3: The purpose of testing is not to prove anythong specific, but to reduce the risk of using the software $$$
+- level 3: The purpose of testing is not to prove anything specific, but to reduce the risk of using the software $$$
 - level 4: Testing is a mental discipline that helps all IT professionals develop higher quality software

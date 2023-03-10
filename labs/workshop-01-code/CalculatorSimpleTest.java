@@ -38,7 +38,7 @@ public class CalculatorSimpleTest {
   public void testSubtract() {
       Calculator c = new Calculator(3, 4);
       int result = c.subtract();
-      assertEquals(result, -1, "result should be -1");
+      assertEquals(result, 1, "result should be 1");
   }
 
   @Test
