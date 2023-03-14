@@ -153,3 +153,14 @@
 
 <img src="../image/lec3pic5.png">
 
+# How to use assertion methods - tips
+
+- In JUnit
+  - The parameter order for assertions is:
+    - expected value, actual value, then message
+  - Hover over the assertion method in your IDE to see the JavaDoc tooltip
+  - the assertions are overloaded so as to apply to any of the primitive types, any of the array types, and anything inheriting from **Object** (i.e. any reference type)
+  - Reference types need a sensible **.equals()** method in order for equality tests to work.
+    - Most classes will already have an **.equals()** method, but if you write your own classes, you'll need to implement one
+  - When comparing aggregate types like arrays or containers - don't loop over them and compare individual elements, just compare the aggregate types directly
+- It's good practice to give a message, and will be worth marks in assessments
