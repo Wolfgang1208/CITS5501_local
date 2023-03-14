@@ -164,3 +164,54 @@
     - Most classes will already have an **.equals()** method, but if you write your own classes, you'll need to implement one
   - When comparing aggregate types like arrays or containers - don't loop over them and compare individual elements, just compare the aggregate types directly
 - It's good practice to give a message, and will be worth marks in assessments
+
+# Doubles (Mocks)
+
+- Actors use doubles to replace them during certain scenes
+  - Dangerous or athletic scenes
+  - Skills the actor doesn't have, like dancing or singing
+- Test doubles replace software components that cannot be used during testing
+
+# Reasons for Test Doubles
+
+- Component has not been written
+- The real component does something destructive that we want to avoid during testing (unrecoverble actions)
+- The real component interacts with an unreliable resource
+- The real component runs very slowly
+- The real component cerates a test cycle
+  - A depends on B, B depends on C, C depends on A
+
+### A test doouble is a software component that implements partial functionality to be used during testing
+
+# Dependencies
+
+- Very often, a class or function is not designed to work on its own, but in combination with outher classes or functions
+  - e.g. an **AddressBook** class may make use of **Contact** class
+- or with other subsystems, or external systems:
+  - dependency on a database for an HR system
+  - dependency on a network, for an Internet chat system
+  - dependency on particular hardware devices
+- How do we deal with these?
+
+# Specific sorts of Test Double
+
+- Dummy objects
+- Fake objects
+- Stub
+- Spies
+- Mocks
+
+# E.g. Mock: test email sending
+
+```
+user enters username
+user enters password
+uses supplies email address
+
+// when sendCondfirmationEmail is called, an email does get sent
+
+EmailServer s = new EmailServer(xxx,xxx,xxx,...)
+sendCondfirmationEmail("xxxx@mmm")
+xs = s.getRecipientsLog()
+
+```
