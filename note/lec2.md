@@ -44,7 +44,11 @@
 # Erroneous State
 
 - By "**Error**" or "**Erroneous state**", the textbook authors mean the situation at runtime, where some fault has become reflected in the system's runtime state
+
   - So you can have a fault in the code (e.g. off-by-one Java loop error in previous pic), but if we execute the program and (at least this time round) that bit of code doesn't happen to get run, we don't get a corresponding erroneous state
+
+- Suppose a method has preconditions
+- Suppose that a user calls it and breaches those preconditions
 
 # Invariants
 

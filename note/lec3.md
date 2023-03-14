@@ -69,8 +69,70 @@
   - Its the number of errors per user not exceeding two per hour of system use.
 
 # Q
+
 <img src="../image/lec3pic2.png">
 
 # How tests relate
+
 - Unit tests are at the bottom of the hierarchy, and directly test small parts of the system created during system implementation
-- 
+  - They should have the properties we said all good unit tests should have (independent, quick to run), and should be run frequently as a project progresses
+    - E.g. for every change we make to a class
+- Integration tests are in the middle of the hierarchy. They test whethr two or more components interoperate properly
+  - They focus on the flow of data and/or control between components, and often will test for properties implied by the system design
+  - They often are run less frequently than uni tests - e.g. if a unit is being changed, we might run integration tests once the unit tests are passing
+- Higher-level tests - syste tests and subsystem tests of various sorts, perhaps including acceptance tests
+  - usually take more effort to set up, and are run fewer times (perhaps just once, in the case of acceptance tests)
+
+# Q
+
+- How do we come up with tests?
+- How do we know when we have enough tests?
+- Both of these are covered in the next few lectures. We look at ways of grouping together different sorts of input so that we don't need to test exhaustively, and at ways of working out how much of the system we have tested (and ought to test)
+
+# Coming up with tests
+
+- In brief, we come up with tests by looking at requirements and specifications, and thinking about the system - modelling it - in different ways
+  <img src="../image/lec3pic3.png">
+- But we also might have some kind of use-case for how the toaster should be used:
+
+  - Scenario: User is in the toaster's physical location
+    1. User inserts a bread product
+    2. System detects product composistion, and prompts user for a toastiness level
+    3. User enters toastiness level
+    4. If the user makes an error, an error message is displayed and step 2 is repeated
+    5. System toasts the bread product
+    6. When system detects the desired toastiness level has been achieved, heat is turned off and a klaxon is sounded
+
+- Use cases can be
+  - graphs
+    - Steps, and links between steps
+    - This way of thinking can help us come up with tests
+  - Logic experssions and as grammars or syntaxes
+
+# Q
+
+- What are typical patterns and techniques when writing tests?
+- How do we deal with difficult-to-test software?
+  - We saw that unit tests should test things in isolation
+    - What if something is hard to isolate? - e.g. it uses a database
+    - We discuss the use of mocks to handle this
+- What sorts of things can be tested?
+  - No just the modules in your code.
+  - We can also test examples and code fragments appearing in documents (e.g. user manuals), API documentation, and provided as example programs
+
+# Coming up
+
+- Testing is all about running software to see how it behaves
+- Static analysis of software consist of any way of inspecting or analysing software (or some other static artifact) without running it.
+  - You just reading or run a testing software upon it. You dont need to run it
+- We will look at:
+  - Inspections (analysis by humans)
+  - Static analysis and formal methods
+
+# Testing frameworks
+
+- Why do test automation?
+  - Reduces cost-human
+  - Reduces human error
+  - Reduces variance in test quality from different individuals
+  - Significantly reduces the cost of regression testing
