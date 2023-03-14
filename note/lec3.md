@@ -136,3 +136,20 @@
   - Reduces human error
   - Reduces variance in test quality from different individuals
   - Significantly reduces the cost of regression testing
+
+# Test fixtures
+
+- Recall that test fixtures are things we need in order to get the system into a known state, ready for a test
+- Often, multiple tests will share some requirements for what environemnt needs to be set up
+- A typical approach in object-oriented languagaes is to group tests with shared fixture requirements into the same class
+- And then to specify "setup" and "tear-down" methods for the class, which will be run before and after each test, respectively
+- Shared objects will be declared as instance variables
+
+# Java
+
+<img src="../image/lec3pic4.png">
+
+# Fixtures in Python
+
+<img src="../image/lec3pic5.png">
+

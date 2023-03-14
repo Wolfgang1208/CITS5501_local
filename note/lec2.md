@@ -49,6 +49,17 @@
 
 - Suppose a method has preconditions
 - Suppose that a user calls it and breaches those preconditions
+- Incoherent/erroneous/invalid state is where, at runtime, invariants (or perconditions) have been breached
+
+- file.open
+
+  - IF file exits an you have permissions - return an open filehandle
+  - ELSE IF no such file - throw FileNotFound
+  - ELSE IF bad permissions - throw BadPermissions
+
+- OutOfMemory
+  - Not something we can control
+  - Cannot be documented
 
 # Invariants
 
