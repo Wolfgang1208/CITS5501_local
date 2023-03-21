@@ -181,7 +181,7 @@
 - The behaviour of the function
   - will usually be to renturn some sort of value
     to cause some sort of "side effect"
-- A side effect is anything the function does to alter the current or subsequent behaviour of the system or its intraction with external systems, other than returning a value.
+- **A side effect is anything the function does to alter the current or subsequent behaviour of the system or its intraction with external systems, other than returning a value.**
   - For example, writing a file to disk, or sending an email, or changing the value of a global variable.
 
 # API e.g.
