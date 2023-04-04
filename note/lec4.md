@@ -18,7 +18,7 @@
 - If something we are trying to test can be modelled as a mathematical function, then we can apply the ISP technique to devise tests for it (and to check how throgh our testing currently is).
 - Before we use it, we'll go through a few mathematical preliminaries
 
-# -abs
+# Functions - abs
 
 - In mathematics, a function is a mapping from one set (called the domain) to another (called the codomain)
 - e.g. the function abs gives the absolute value of an integer. Its domain is the integers, and its codomain is the non-negative integers
@@ -41,6 +41,10 @@
 
 - we're ignoring the fact that a Java int can't actually hold every possible integer value
   - it's limited to the range of values from -2147483648 to 2147483647 (-2^31 ~ 2^31-1)
+- But for most purposes, that model will be good enough.
+- How much detail we put into our models - how "true to life" they must be - will depend on what the consequences are if our software goes wrong, and how much we want to avoid those consequences.
+- If we are writing budgeting software in Python for our own use, then the model above is probably fine.
+- If we are working with numbers of very large magnitude (or perhaps are writing a compiler), then we might want to make our model more precise。
 
 # Testing functions
 
@@ -53,6 +57,13 @@
 
 - Instead of writing 4294967296 tests for java.lang.Math.abs, we might instead try to ensure that
   - We have tested it with a positive **int**, negative **int**, 0
+- Why? Because in all likelihood, java.lang.Math.abs will treat all positive **int**s thet same - once we've tested a few positive **int**s, changes are that testing moew isn't go to make any difference.
+- We have grouped the possible inputs into what are called equivalence classes - sets of values which (for some property we choose) can be treated as equivalent.
+
+# Boundaries
+
+- So having divided up the **int**s into positive, negative and 0, we might decide to test java.lang.Math.abs with, say, the numbers 32, -4059, and 0.
+- Knowing that when programmers make mistakes, it is often around the boundaries of things, we might also test the numbers 1 and -1 (and perhaps the numbers -2^31 and 2^31 - 1) - why those numbers?
 
 # Mutating other state
 

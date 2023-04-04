@@ -23,7 +23,14 @@ class test {
         System.out.println(myArray[0]);
     }
 
+    private static void printNum() {
+        long a = 9223372036854775807L;
+        System.out.println(a + 100000000);
+    }
+
     public static void main(String[] args) {
         arrayMethod();
+        printNum();
     }
+
 }
