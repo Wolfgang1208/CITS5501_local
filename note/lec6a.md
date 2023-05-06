@@ -1,8 +1,8 @@
 # Syntax-based testing
 
-- Syntax-based models
+- Syntax-based models (语法测试)
   - Keeping a not of the rules and symbols we need is useful here (or bring your pre-reading notes)
-- Mutation testing
+- Mutation testing (变更测试)
 
 # Grammars, syntax and languaga
 
@@ -26,20 +26,32 @@
 
 # Notation
 
+```javascript
+<digit> ::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" |
+<year>  ::= <digit> <digit> <digit> <digit>
+<month> ::= <digit> <digit>
+<day>   ::= <digit> <digit>
+<date>  ::= <year> "-" <month> "-" <day>
+```
+
 - The notation is a simplified form of what is called BNF (Backus-Naur-Form)
 - The following symbols are used in this notation:
-  - We read "::=" as "is defined as" or "can be expanded to", and "|" as "or"
+
+  - We read **"::="** as **"is defined as"** or **"can be expanded to"**, and **"|"** as **"or"**
   - So the first line says, "A 'digit' is defined as being either the string '0', or the string '1', or ..."
   - (These symbols are sometimes called "meta-syntactic symbols", meaning symbols used to define a syntax)
-- The things in strings are called terminal symbols - they are the equivalent of "words" in our language
+
+- The things in **strings** are called **terminal symbols** - they are the equivalent of "words" in our language
 - They are like atoms, in that they are the smallest, indivisible parts of our language
-- In our case, the terminals are all strings containing a single digit
+- In our case, _the terminals are all strings containing a single digit_
 
-- The things between angle brackets are called non-terminal symbols
+- The things between **angle brackets** are called **non-terminal symbols**
 - The above grammar contains five rules (also called "productions", in the textbook)
-- In the sorts of grammar we will consider, every rule is of the form
+- In the sorts of grammar we will consider, every rule is of the form:
+  `non-terminal "::=" sequence of terminals and non-terminals`
 
-# Notation
+- To be precise: the simplest possible right-hand side (RHS) of a rule will be a sequence of terminals and non-terminals, meaning "these strings, concatenated together"
+- (For example - the RHS of the last rule, which means "an expansion of the 'year' rule, then a hyphen, then an expansion of the 'month' rule then a hyphen, then an expansion of the 'day' rule")
 
 - But we can also insert on the RHS the following symbols, between or after terminals and non-terminals
   - bars to indicate "or"
